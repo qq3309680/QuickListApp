@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>
+      {{checklist.title}}
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="uncheckItems()"><ion-icon name="refresh-circle"></ion-icon></button>
+      <button ion-button icon-only (click)="addItem()"><ion-icon name="add-circle"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list no-lines>
+    <ion-item-sliding *ngFor="let item of checklist.items">
+      <ion-item style="position: relative;height: 75px;border-bottom: 1px solid #cecece;" >
+        <span class="item-title" style="width:80%; height: 45px; position: absolute;top: 3px; left:8px;display: block;font-weight: 400;color: #000000;line-height: 45px;font-size: 1.4em;">{{item.title}}</span>
+        <span class="item-price" style="width:80%;height: 24px;position: absolute;top: 40px;left: 10px;display: block;color:#808080;line-height: 24px;font-size: 1em;">￥1000.00</span>
+        <span class="item-state" style="height: 24px;position: absolute;top: 10px;right: 16px;color: #000000;line-height: 24px;font-size: 1em;">已发货</span>
+        <!--<ion-checkbox [checked]="item.checked" (click)="toggleItem(item)"></ion-checkbox>-->
+      </ion-item>
+      <ion-item-options>
+        <button ion-button icon-only color="light" (click)="renameItem(item)"><ion-icon
+          name="clipboard"></ion-icon></button>
+        <button ion-button icon-only color="danger" (click)="removeItem(item)"><ion-icon name="trash"></ion-icon></button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
